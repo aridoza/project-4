@@ -1,0 +1,2 @@
+module MindstuffsHelper
+end
