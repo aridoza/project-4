@@ -4,20 +4,70 @@ module.exports = {
   baseUrl: 'http://localhost:3000',
 
   getAllSpots: function(ajaxDoneFn) {
-  axios.get(this.baseUrl)
-  // if successful auth, pass the response to ajaxDoneFn
+  axios.get(this.baseUrl + '/parkings')
   .then(function (response) {
-    console.log("response from axios get auth:", response.data);
+    console.log("response from axios get spots:", response.data);
     if (ajaxDoneFn) {
       ajaxDoneFn(response.data);
     }
   })
-  // if auth fails, nothing passed
   .catch(function (response) {
-    console.log("Error with authentication", response);
+    console.log("Error");
     ajaxDoneFn();
   });
-}
+},
+
+  addSpot: function() {
+    const parking = {
+      date: '1/1/2017',
+      time: '',
+      car_type: '',
+      description: ''
+    }
+    axios.post(this.baseUrl + '/parkings', parking)
+
+    success: (parking) => {
+      this.state.handleSubmit(parking);
+    }
+    // .then(function (response) {
+    //   if (addParking) {
+    //     addParking(true);
+    //   }
+    // })
+    // .catch(function (response) {
+    //   console.log("failed to add spot");
+    //   if (addParking){
+    //     addParking(false);
+    //   }
+    // });
+  },
+//
+//   api.post('/contact', (req, res) => {
+//   // create a new taco
+//   collection.insert(req.body, (err, result) => {
+//     res.json(result);
+//   });
+// });
+
+  deleteSpot: function(id){
+    axios.delete(this.baseUrl + id)
+    .then(function (response) {
+      console.log("deleting spot");
+      this.removeParkingSpot(id);
+    })
+    .catch(function (response) {
+      console.log("error deleting spot");
+      ajaxDoneFn();
+    });
+  },
+  removeParkingSpot(id){
+    var newSpots = this.state.parkings.filter((spot) => {
+      return spot.id != id;
+    });
+    this.setState({ parkings: newSpots })
+  }
+
+  }
 
   // getAllSpots: function() {
   //   console.log("get all parking spots");
@@ -32,4 +82,3 @@ module.exports = {
   //     return err;
   //   })
   // },
-}

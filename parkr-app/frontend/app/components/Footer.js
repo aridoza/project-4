@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Footer extends Component {
   render() {
     return(
-      <h3>I am the footer.</h3>
+      <h4>Copyright &copy; 2016 Parkr LLC </h4>
     )
   }
 }

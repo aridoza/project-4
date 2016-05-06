@@ -4,7 +4,7 @@ class About extends Component {
   render(){
     return(
       <div>
-        <h3>The about page!</h3>
+        <h4>It can be tough finding a parking spot in the city, but Parkr wants to help make it easier for everyone. Join us, and help make your night out about the night out, not the drive out.</h4>
       </div>
     );
   }

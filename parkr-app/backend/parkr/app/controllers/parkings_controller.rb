@@ -1,10 +1,11 @@
-class ParkingsController < BaseController
+class ParkingsController < SiteController
+  respond_to :html, :xml, :json
   def index
-    respond_with Parking.all
+    render json: Parking.all, status: 200
   end
 
   def create
-    respond_with :api, :v1, Parking.create(parking_params)
+    respond_with Parking.create(parking_params)
   end
 
   def destroy

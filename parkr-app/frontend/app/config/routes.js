@@ -2,17 +2,22 @@ import React from 'react';
 import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 
 import Main from '../components/Main';
-import Body from '../components/Body';
+import Openings from '../components/Openings';
+import Header from '../components/Header';
+import Home from '../components/Home';
 import AllSpots from '../components/AllSpots';
 import About from '../components/About';
+import NewParking from '../components/NewParking';
+import OpeningsContainer from '../containers/OpeningsContainer';
 
 
 const routes = (
   <Router history={browserHistory}>
     <Route path="/" component={Main}>
-      <IndexRoute component={Body} />
-      <Route path="/parkings" component={AllSpots} />
+      <IndexRoute component={Home} />
+      <Route path="/parkings" component={Openings} />
       <Route path="/about" component={About} />
+      <Route path="/newparking" component={OpeningsContainer} />
     </Route>
   </Router>
 )
