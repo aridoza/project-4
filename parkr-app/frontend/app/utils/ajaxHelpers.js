@@ -17,13 +17,8 @@ module.exports = {
   });
 },
 
-  addSpot: function() {
-    const parking = {
-      date: '1/1/2017',
-      time: '',
-      car_type: '',
-      description: ''
-    }
+  addSpot: function(parking) {
+    console.log("adding spot with axios...")
     axios.post(this.baseUrl + '/parkings', parking)
 
     success: (parking) => {
