@@ -25,13 +25,21 @@ const Openings = React.createClass({
     this.setState({ parkings: newParkings })
   },
   handleDelete(id){
+    var id = this.state.parkings.id;
     ajaxHelpers.deleteSpot(id);
+  },
+  handleUpdate(id){
+    var id = this.state.parkings.id;
+    ajaxHelpers.updateSpot(id)
   },
 
   render(){
+    var style = {
+      background: 'green'
+    };
     return(
-      <div>
-        <AllSpots parkings={this.state.parkings}/>
+      <div style={style}>
+        <AllSpots parkings={this.state.parkings} id={this.state.parkings.id} deleteOpening={this.handleDelete} updateSpot={this.handleUpdate}/>
         <NewParking onChange={this.handleSubmit}/>
       </div>
     )

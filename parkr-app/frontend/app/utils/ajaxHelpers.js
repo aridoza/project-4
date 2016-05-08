@@ -1,6 +1,8 @@
 var axios = require('axios');
+var id = [];
 
 module.exports = {
+
   baseUrl: 'http://localhost:3000',
 
   getAllSpots: function(ajaxDoneFn) {
@@ -9,32 +11,20 @@ module.exports = {
     console.log("response from axios get spots:", response.data);
     if (ajaxDoneFn) {
       ajaxDoneFn(response.data);
+
+      for (var i = 0; i < response.data.length; i++){
+        id.push(response.data[i].id);
+      }
     }
-  })
-  .catch(function (response) {
-    console.log("Error");
-    ajaxDoneFn();
+        console.log(id);
   });
+
 },
 
-  addSpot: function(parking) {
-    console.log("adding spot with axios...")
-    axios.post(this.baseUrl + '/parkings', parking)
 
-    success: (parking) => {
-      this.state.handleSubmit(parking);
-    }
-    // .then(function (response) {
-    //   if (addParking) {
-    //     addParking(true);
-    //   }
-    // })
-    // .catch(function (response) {
-    //   console.log("failed to add spot");
-    //   if (addParking){
-    //     addParking(false);
-    //   }
-    // });
+  addSpot: function(parking) {
+    console.log("adding spot with axios...");
+    axios.post(this.baseUrl + '/parkings', parking);
   },
 //
 //   api.post('/contact', (req, res) => {
@@ -44,25 +34,16 @@ module.exports = {
 //   });
 // });
 
-  deleteSpot: function(id){
-    axios.delete(this.baseUrl + id)
-    .then(function (response) {
-      console.log("deleting spot");
-      this.removeParkingSpot(id);
-    })
-    .catch(function (response) {
-      console.log("error deleting spot");
-      ajaxDoneFn();
-    });
+  deleteSpot: function(parking){
+    console.log("deleting spot with axios...");
+    console.log();
+    axios.delete('http://localhost:3000/parkings/' + id, parking);
   },
-  removeParkingSpot(id){
-    var newSpots = this.state.parkings.filter((spot) => {
-      return spot.id != id;
-    });
-    this.setState({ parkings: newSpots })
-  }
 
-  }
+  updateSpot: function(parking) {
+    console.log("updating spot with axios...")
+    axios.put('http://localhost:3000/parkings/' + id + '/edit', parking)
+  },
 
   // getAllSpots: function() {
   //   console.log("get all parking spots");
@@ -77,3 +58,4 @@ module.exports = {
   //     return err;
   //   })
   // },
+}

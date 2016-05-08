@@ -4,12 +4,20 @@ import ajaxHelpers from '../utils/ajaxHelpers';
 class NewParking extends Component {
 
   render(){
+    var style = {
+      display: 'flex',
+      justifyContent: 'center'
+    };
     return(
-      <div>
+      <div style={style}>
         <input ref="date" placeholder="Enter the date" name="date" onChange={this.props.onChangeDate}/>
+        <br />
         <input ref="time" placeholder="Current time" name="time" onChange={this.props.onChangeTime}/>
+        <br />
         <input ref="car_type" placeholder="Car type (ex: Sedan)" name="car_type" onChange={this.props.onChangeCar}/>
+        <br />
         <input ref="description" placeholder="When will it be available?" name="description" onChange={this.props.onChangeDesc}/>
+        <br />
         <button onClick={this.props.onSubmitSpot}>Add</button>
       </div>
     )

@@ -9,9 +9,21 @@ import { Link } from 'react-router';
 
 const Main = React.createClass({
   render(){
+    var linkStyle = {
+      listStyleType: 'none',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'space-around'
+    };
+    var style = {
+      display: 'flex',
+      justifyContent: 'space-around',
+      flexDirection: 'column',
+      background: 'orange'
+    };
     return(
-      <div>
-        <ul>
+      <div style={style}>
+        <ul style={linkStyle}>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/parkings">Available Parking</Link></li>
           <li><Link to="/about">About</Link></li>
