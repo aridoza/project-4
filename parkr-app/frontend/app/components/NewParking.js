@@ -6,7 +6,9 @@ class NewParking extends Component {
   render(){
     var style = {
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      width: '80%',
+      margin: '0 auto'
     };
     return(
       <div style={style}>

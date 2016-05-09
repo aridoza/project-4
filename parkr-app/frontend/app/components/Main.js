@@ -19,7 +19,9 @@ const Main = React.createClass({
       display: 'flex',
       justifyContent: 'space-around',
       flexDirection: 'column',
-      background: 'orange'
+      width: '100%',
+      height: '100%',
+      background: '#FFD700'
     };
     return(
       <div style={style}>

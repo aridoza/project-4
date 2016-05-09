@@ -35,7 +35,7 @@ const Openings = React.createClass({
 
   render(){
     var style = {
-      background: 'green'
+      background: 'black'
     };
     return(
       <div style={style}>
